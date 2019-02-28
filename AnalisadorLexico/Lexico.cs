@@ -12,6 +12,7 @@ namespace AnalisadorLexico
         private int i;
 
 
+
         private char[] codigo;
 
         private string[] Operadores = { "+", "-", "*", "/", ">", "<", "=", "!", "(", ")" };
