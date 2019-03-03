@@ -35,8 +35,9 @@
             this.lbToken = new System.Windows.Forms.Label();
             this.txbToken = new System.Windows.Forms.RichTextBox();
             this.openArqCod = new System.Windows.Forms.OpenFileDialog();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnTabelaSimbolos = new System.Windows.Forms.Panel();
             this.lbTabSimbolos = new System.Windows.Forms.Label();
+            this.listView1 = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
             // txbCodigo
@@ -102,12 +103,12 @@
             // 
             this.openArqCod.FileName = "openArqCod";
             // 
-            // panel1
+            // pnTabelaSimbolos
             // 
-            this.panel1.Location = new System.Drawing.Point(744, 44);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(167, 361);
-            this.panel1.TabIndex = 6;
+            this.pnTabelaSimbolos.Location = new System.Drawing.Point(744, 44);
+            this.pnTabelaSimbolos.Name = "pnTabelaSimbolos";
+            this.pnTabelaSimbolos.Size = new System.Drawing.Size(167, 361);
+            this.pnTabelaSimbolos.TabIndex = 6;
             // 
             // lbTabSimbolos
             // 
@@ -119,14 +120,23 @@
             this.lbTabSimbolos.TabIndex = 7;
             this.lbTabSimbolos.Text = "Tabela de Simbolos:";
             // 
+            // listView1
+            // 
+            this.listView1.Location = new System.Drawing.Point(400, 257);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(121, 97);
+            this.listView1.TabIndex = 8;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            // 
             // frmAnalisadorLexico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(923, 416);
+            this.Controls.Add(this.listView1);
             this.Controls.Add(this.lbTabSimbolos);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnTabelaSimbolos);
             this.Controls.Add(this.txbToken);
             this.Controls.Add(this.lbToken);
             this.Controls.Add(this.lbCodigo);
@@ -150,8 +160,9 @@
         private System.Windows.Forms.Label lbToken;
         private System.Windows.Forms.RichTextBox txbToken;
         private System.Windows.Forms.OpenFileDialog openArqCod;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnTabelaSimbolos;
         private System.Windows.Forms.Label lbTabSimbolos;
+        private System.Windows.Forms.ListView listView1;
     }
 }
 

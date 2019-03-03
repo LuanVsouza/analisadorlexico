@@ -20,8 +20,14 @@ namespace AnalisadorLexico
 
         private void btnGeradorLexico_Click(object sender, EventArgs e)
         {
+            TabelaSimbolos tabela = new TabelaSimbolos();
+            Simbolo simbolo = new Simbolo();
+
+            //Adcionar os tokens
 
             string codigo;
+
+            txbToken.Clear();
 
             codigo = txbCodigo.Text;
 
@@ -44,8 +50,14 @@ namespace AnalisadorLexico
             {
                 MessageBox.Show("Erro: Nenhum Código Digitado!");
             }
-      
+
+            List<Simbolo> tbsimbolos = new List<Simbolo>();
+            tbsimbolos = tabela.Simbolos;
+
+        
+            listView1.Columns.Add(tabela.id_simbolo, 2);
             
+
         }
 
         //Carregar o Arquivo com o codigo
