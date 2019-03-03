@@ -10,8 +10,6 @@ namespace AnalisadorLexico
     {
         public List<Simbolo> Simbolos = new List<Simbolo>();
 
-        public List<Simbolo> tabela = new List<Simbolo>();
-
         public int id_simbolo(string lexema)
         {
             try
@@ -35,11 +33,6 @@ namespace AnalisadorLexico
             {
                 return -1;
             }
-        }
-
-        public void tbSimbolos(int id, string nome)
-        {
-          
         }
     }
 }

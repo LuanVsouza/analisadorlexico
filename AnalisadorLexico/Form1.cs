@@ -51,13 +51,6 @@ namespace AnalisadorLexico
                 MessageBox.Show("Erro: Nenhum Código Digitado!");
             }
 
-            List<Simbolo> tbsimbolos = new List<Simbolo>();
-            tbsimbolos = tabela.Simbolos;
-
-        
-            listView1.Columns.Add(tabela.id_simbolo, 2);
-            
-
         }
 
         //Carregar o Arquivo com o codigo

@@ -11,13 +11,13 @@ namespace AnalisadorLexico
         public String[] PalavrasReservadas = {
             "Int",
             "String",
-            "Decimal",
-            "Long",
-            "Char",
-            "{",
-            "}",
-            "(",
-            ")"
+            "double",
+            "float",
+            "if",
+            "else",
+            "while",
+            "for",
+            "end"
         };
 
         public PalavraReservada() { }

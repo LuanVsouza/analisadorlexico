@@ -67,7 +67,7 @@ namespace AnalisadorLexico
                     nextChar();
                 };
 
-                token = "<NUM," + v.ToString() + ">";
+                token = "<NUM>";
 
                 return token;
             }
@@ -87,11 +87,11 @@ namespace AnalisadorLexico
 
                 if (palavraReservada.PalavrasReservadas.Where(x => x.ToUpper() == lexema.ToString().ToUpper()).ToList().Count > 0)
                 {
-                    token = "<" + lexema.ToString() + "," + lexema.ToString() + ">";
+                    token = "<Palavra reservada>";
                 }
                 else
                 {
-                    token = "<ID," + tabelaSimbolos.id_simbolo(lexema.ToString()).ToString() + ">";
+                    token = "<ID>";
                 }
 
                 return token;
@@ -99,7 +99,7 @@ namespace AnalisadorLexico
 
             if (palavraReservada.PalavrasReservadas.Where(x => x.ToUpper() == peek.ToString().ToUpper()).ToList().Count > 0)
             {
-                token = "<" + peek.ToString() + ">";
+                token = "<Palavra reservada>";
                 nextChar();
                 return token;
             }
@@ -111,7 +111,7 @@ namespace AnalisadorLexico
 
                 lexema.Append(peek);
 
-                if (peek.ToString() == "=" || peek.ToString() == "!" || peek.ToString() == ">" || peek.ToString() == "<")
+                if (peek.ToString() == "=" || peek.ToString() == "!" || peek.ToString() == ">" || peek.ToString() == "<" || peek.ToString() == "==" || peek.ToString() == ">=" || peek.ToString() == "<=")
                 {
                     nextChar();
 
@@ -126,7 +126,7 @@ namespace AnalisadorLexico
                     nextChar();
                 }
 
-                token = "<OP," + lexema.ToString() + ">";
+                token = "<RELOP>";
 
                 return token;
             }
