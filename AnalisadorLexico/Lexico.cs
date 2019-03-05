@@ -85,6 +85,7 @@ namespace AnalisadorLexico
 
                 };
 
+                //Verifica se é uma palavra reservada se não ID(variaveis)
                 if (palavraReservada.PalavrasReservadas.Where(x => x.ToUpper() == lexema.ToString().ToUpper()).ToList().Count > 0)
                 {
                     token = "<Palavra reservada>";
@@ -104,7 +105,7 @@ namespace AnalisadorLexico
                 return token;
             }
 
-            //Operador
+            //Operadores
             if (Operadores.Where(x => x == peek.ToString()).ToList().Count > 0)
             {
                 StringBuilder lexema = new StringBuilder();
