@@ -10,6 +10,8 @@ namespace AnalisadorLexico
     {
         public List<Simbolo> Simbolos = new List<Simbolo>();
 
+        public TabelaSimbolos() { }
+
         public int id_simbolo(string lexema)
         {
             try

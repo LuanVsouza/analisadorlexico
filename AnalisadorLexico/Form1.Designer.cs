@@ -37,6 +37,8 @@
             this.openArqCod = new System.Windows.Forms.OpenFileDialog();
             this.lbTabSimbolos = new System.Windows.Forms.Label();
             this.txbTabSimbolos = new System.Windows.Forms.RichTextBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // txbCodigo
@@ -120,12 +122,21 @@
             this.txbTabSimbolos.TabIndex = 8;
             this.txbTabSimbolos.Text = "";
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(388, 242);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(143, 138);
+            this.dataGridView1.TabIndex = 9;
+            // 
             // frmAnalisadorLexico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(923, 416);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.txbTabSimbolos);
             this.Controls.Add(this.lbTabSimbolos);
             this.Controls.Add(this.txbToken);
@@ -137,6 +148,7 @@
             this.MaximizeBox = false;
             this.Name = "frmAnalisadorLexico";
             this.Text = "Analisador Léxico";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -153,6 +165,7 @@
         private System.Windows.Forms.OpenFileDialog openArqCod;
         private System.Windows.Forms.Label lbTabSimbolos;
         private System.Windows.Forms.RichTextBox txbTabSimbolos;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
 

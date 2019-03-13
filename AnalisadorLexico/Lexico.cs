@@ -17,12 +17,12 @@ namespace AnalisadorLexico
 
         private string[] Operadores = { "+", "-", "*", "/", ">", "<", "=", "!", "(", ")" };
 
-        private List<Simbolo> Simbolos = new List<Simbolo>();
         private PalavraReservada palavraReservada = new PalavraReservada();
-        private TabelaSimbolos tabelaSimbolos = new TabelaSimbolos();
+        public TabelaSimbolos tabelaSimbolos;
 
         public Lexico(char[] p)
         {
+            tabelaSimbolos = new TabelaSimbolos();
             codigo = p;
             init();
         }
@@ -92,6 +92,7 @@ namespace AnalisadorLexico
                 }
                 else
                 {
+                    tabelaSimbolos.id_simbolo(lexema.ToString());
                     token = "<ID>";
                 }
 

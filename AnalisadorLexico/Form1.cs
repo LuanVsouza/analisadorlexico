@@ -20,8 +20,6 @@ namespace AnalisadorLexico
 
         private void btnGeradorLexico_Click(object sender, EventArgs e)
         {
-            TabelaSimbolos tabela = new TabelaSimbolos();
-            Simbolo simbolo = new Simbolo();
 
             //Adcionar os tokens
 
@@ -44,6 +42,14 @@ namespace AnalisadorLexico
                 {
                     token = lex.GetToken();
                     txbToken.Text += token.ToString() + "\n";
+                }
+
+                foreach (Simbolo item in lex.tabelaSimbolos.Simbolos)
+                {
+                    txbTabSimbolos.Text += "ID: " + item.Id.ToString() + " | ";
+                    txbTabSimbolos.Text += "Nome: " + item.Nome.ToString() + "\n";
+
+                    dataGridView1.DataSource = item.Nome.ToString();
                 }
             }
             else
@@ -72,7 +78,6 @@ namespace AnalisadorLexico
             {
                 txbCodigo.Text = System.IO.File.ReadAllText(openArqCod.FileName);
             }
-            
         }
     }
 }
