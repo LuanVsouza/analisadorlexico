@@ -73,6 +73,7 @@ namespace AnalisadorLexico
 
             DialogResult arq = openArqCod.ShowDialog();
 
+
             //Se o arquivo Selecionado for OK coloca no TxbCodigo
             if(arq.ToString() == "OK")
             {
