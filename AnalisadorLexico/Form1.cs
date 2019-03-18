@@ -18,19 +18,19 @@ namespace AnalisadorLexico
             InitializeComponent();
         }
 
+        private Simbolo simbolo = new Simbolo();
+        private TabelaSimbolos tabelaSimbolos = new TabelaSimbolos();
+
+        string codigo;
+
+        char[] programa;
+
         private void btnGeradorLexico_Click(object sender, EventArgs e)
         {
-
-            //Adcionar os tokens
-
-            string codigo;
-
-            txbToken.Clear();
-
             codigo = txbCodigo.Text;
 
             //Converte o codigo de string para char
-            char[] programa = codigo.ToCharArray();
+            programa = codigo.ToCharArray();
 
             if(codigo != "")
             {
@@ -40,16 +40,28 @@ namespace AnalisadorLexico
 
                 while (token != ";")
                 {
+                    //Adcionar os tokens
                     token = lex.GetToken();
-                    txbToken.Text += token.ToString() + "\n";
+
+                    if ((token == "<Palavra reservada>") || (token == "<Palavra reservada>") || (token == "<RELOP>") || (token == ";"))
+                    {
+                        if(token != ";")
+                        {
+                            txbToken.Text += token.ToString() + "\n";
+                        }  
+                    }
+                    else
+                    {
+                        txbToken.Text += "<ID, " + tabelaSimbolos.add_simbolo(token) + ">" + "\n";
+                    }      
                 }
 
-                foreach (Simbolo item in lex.tabelaSimbolos.Simbolos)
+                txbTabSimbolos.Clear();
+
+                foreach (Simbolo item in tabelaSimbolos.Simbolos)
                 {
                     txbTabSimbolos.Text += "ID: " + item.Id.ToString() + " | ";
                     txbTabSimbolos.Text += "Nome: " + item.Nome.ToString() + "\n";
-
-                    dataGridView1.DataSource = item.Nome.ToString();
                 }
             }
             else
@@ -57,6 +69,7 @@ namespace AnalisadorLexico
                 MessageBox.Show("Erro: Nenhum Código Digitado!");
             }
 
+            txbCodigo.Clear();
         }
 
         //Carregar o Arquivo com o codigo

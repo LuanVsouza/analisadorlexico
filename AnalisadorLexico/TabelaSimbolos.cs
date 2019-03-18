@@ -10,31 +10,43 @@ namespace AnalisadorLexico
     {
         public List<Simbolo> Simbolos = new List<Simbolo>();
 
+        private bool ok = false;
+        private int id = 0;
+
         public TabelaSimbolos() { }
 
-        public int id_simbolo(string lexema)
+        public int add_simbolo(string lexema)
         {
-            try
+            foreach (Simbolo item in Simbolos)
             {
-                if (Simbolos.Where(x => x.Nome == lexema).ToList().Count > 0)
+                //Verifica se já tem o lexema na tabela
+                if (item.Nome == lexema)
                 {
-                    return Simbolos.Where(x => x.Nome == lexema).First().Id;
+                    ok = true;
+                    //Coloca o valor do ID do lexema ja existente na tabela
+                    id = item.Id;
                 }
-                else
-                {
-                    Simbolos.Add(new Simbolo
-                    {
-                        Id = Simbolos.Count + 1,
-                        Nome = lexema
-                    });
+            }
 
-                    return Simbolos.Where(x => x.Nome == lexema).First().Id;
-                }
-            }
-            catch
+            //Se não tiver o lexema na tabela ele coloca
+            if ((ok == false) || (Simbolos.Count == 0))
             {
-                return -1;
+                //Adciona o lexema na tabela
+                Simbolos.Add(new Simbolo
+                {
+                    Id = Simbolos.Count + 1,
+                    Nome = lexema
+                });
+
+                //Coloca o valor do ID do novo lexema na variavel
+                id = Simbolos.Count;
+
+                ok = false;
             }
+
+            //Retorna o ID do lexema
+            return id;
+
         }
     }
 }

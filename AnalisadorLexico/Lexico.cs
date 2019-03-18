@@ -11,18 +11,14 @@ namespace AnalisadorLexico
         private char peek;
         private int i;
 
-
-
         private char[] codigo;
 
-        private string[] Operadores = { "+", "-", "*", "/", ">", "<", "=", "!", "(", ")" };
+        private string[] Operadores = { "+", "-", "*", "/", ">", "<", "=", "!", "(", ")"};
 
         private PalavraReservada palavraReservada = new PalavraReservada();
-        public TabelaSimbolos tabelaSimbolos;
 
         public Lexico(char[] p)
         {
-            tabelaSimbolos = new TabelaSimbolos();
             codigo = p;
             init();
         }
@@ -33,6 +29,7 @@ namespace AnalisadorLexico
             nextChar();
         }
 
+        //Percorre o codigo palavra por palavra
         private void nextChar()
         {
             if (i < codigo.Length)
@@ -50,7 +47,7 @@ namespace AnalisadorLexico
         {
             string token = "";
 
-            //enquanto tiver espaço ele ignora
+            //Enquanto tiver espaço ou \t ou \n ele ignora
             while (peek == ' ' || peek == '\t' || peek == '\n')
             {
                 nextChar();
@@ -80,6 +77,7 @@ namespace AnalisadorLexico
 
                 while (Char.IsLetterOrDigit(peek) || peek == '"')
                 {
+                    token = lexema.ToString();
                     lexema.Append(peek);
                     nextChar();
 
@@ -92,8 +90,7 @@ namespace AnalisadorLexico
                 }
                 else
                 {
-                    tabelaSimbolos.id_simbolo(lexema.ToString());
-                    token = "<ID>";
+                    token = lexema.ToString();
                 }
 
                 return token;
