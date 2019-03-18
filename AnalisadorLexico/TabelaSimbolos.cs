@@ -10,13 +10,13 @@ namespace AnalisadorLexico
     {
         public List<Simbolo> Simbolos = new List<Simbolo>();
 
-        private bool ok = false;
-        private int id = 0;
-
         public TabelaSimbolos() { }
 
         public int add_simbolo(string lexema)
         {
+            bool ok = false;
+            int id = 0;
+
             foreach (Simbolo item in Simbolos)
             {
                 //Verifica se já tem o lexema na tabela
@@ -29,7 +29,7 @@ namespace AnalisadorLexico
             }
 
             //Se não tiver o lexema na tabela ele coloca
-            if ((ok == false) || (Simbolos.Count == 0))
+            if (ok == false)
             {
                 //Adciona o lexema na tabela
                 Simbolos.Add(new Simbolo
@@ -46,7 +46,6 @@ namespace AnalisadorLexico
 
             //Retorna o ID do lexema
             return id;
-
         }
     }
 }

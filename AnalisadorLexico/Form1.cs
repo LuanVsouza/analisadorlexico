@@ -29,6 +29,8 @@ namespace AnalisadorLexico
         {
             codigo = txbCodigo.Text;
 
+            String token = "";
+
             //Converte o codigo de string para char
             programa = codigo.ToCharArray();
 
@@ -36,23 +38,23 @@ namespace AnalisadorLexico
             {
                 Lexico lex = new Lexico(programa);
 
-                String token = "";
-
                 while (token != ";")
                 {
                     //Adcionar os tokens
                     token = lex.GetToken();
 
-                    if ((token == "<Palavra reservada>") || (token == "<Palavra reservada>") || (token == "<RELOP>") || (token == ";"))
+                    if ((token == "<Palavra reservada>") || (token == "<Palavra reservada>") || (token == "<RELOP>") || (token == ";") || (token == ("<STRING>")))
                     {
                         if(token != ";")
                         {
                             txbToken.Text += token.ToString() + "\n";
+                            token = "";
                         }  
                     }
                     else
                     {
                         txbToken.Text += "<ID, " + tabelaSimbolos.add_simbolo(token) + ">" + "\n";
+                        token = "";
                     }      
                 }
 

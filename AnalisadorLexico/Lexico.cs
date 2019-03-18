@@ -69,13 +69,29 @@ namespace AnalisadorLexico
                 return token;
             }
 
+            if(peek == '"')
+            {
+                nextChar();
+                string aux = "";
+
+                do
+                {
+                    aux = aux.Insert(aux.Length, peek.ToString());
+                    nextChar();
+                } while (!(peek == '"'));
+                token = "<STRING>";
+                nextChar();
+                return token;
+
+            }
+
             //Identificador
-            if (Char.IsLetter(peek) || peek == '"')
+            if (Char.IsLetter(peek))
             {
                 // armazena as palavras do codigo
                 StringBuilder lexema = new StringBuilder();
 
-                while (Char.IsLetterOrDigit(peek) || peek == '"')
+                while (Char.IsLetterOrDigit(peek))
                 {
                     token = lexema.ToString();
                     lexema.Append(peek);
