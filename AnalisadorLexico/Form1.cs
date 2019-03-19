@@ -38,23 +38,27 @@ namespace AnalisadorLexico
             {
                 Lexico lex = new Lexico(programa);
 
-                while (token != ";")
+                while (token != "end")
                 {
                     //Adcionar os tokens
                     token = lex.GetToken();
 
-                    if ((token == "<Palavra reservada>") || (token == "<Palavra reservada>") || (token == "<RELOP>") || (token == ";") || (token == ("<STRING>")))
+                    if ( (token == "<Palavra reservada>") || (token == "<NUM>") || (token == "<RELOP>") || (token == "<LITERAL>") || (token == "<DELIM>") || (token == "end") )
                     {
-                        if(token != ";")
+                        if (token.ToString() == "end")
+                        {
+                            txbToken.Text += "<Palavra reservada>";
+                        }
+                        else
                         {
                             txbToken.Text += token.ToString() + "\n";
-                            token = "";
-                        }  
+                        }
+
+                            
                     }
                     else
                     {
                         txbToken.Text += "<ID, " + tabelaSimbolos.add_simbolo(token) + ">" + "\n";
-                        token = "";
                     }      
                 }
 

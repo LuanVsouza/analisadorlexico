@@ -13,7 +13,8 @@ namespace AnalisadorLexico
 
         private char[] codigo;
 
-        private string[] Operadores = { "+", "-", "*", "/", ">", "<", "=", "!", "(", ")"};
+        private string[] Operadores = {"<", ">", "=", "==", ">=", "<=", "!", "+", "-", "/", "*"};
+        private string[] Delimitadores = { "{", "}", "(", ")", ";"};
 
         private PalavraReservada palavraReservada = new PalavraReservada();
 
@@ -79,7 +80,8 @@ namespace AnalisadorLexico
                     aux = aux.Insert(aux.Length, peek.ToString());
                     nextChar();
                 } while (!(peek == '"'));
-                token = "<STRING>";
+
+                token = "<LITERAL>";
                 nextChar();
                 return token;
 
@@ -102,20 +104,20 @@ namespace AnalisadorLexico
                 //Verifica se é uma palavra reservada se não ID(variaveis)
                 if (palavraReservada.PalavrasReservadas.Where(x => x.ToUpper() == lexema.ToString().ToUpper()).ToList().Count > 0)
                 {
-                    token = "<Palavra reservada>";
+                    if(lexema.ToString() == "end")
+                    {
+                        token = lexema.ToString();
+                    }
+                    else
+                    {
+                        token = "<Palavra reservada>";
+                    }
                 }
                 else
                 {
                     token = lexema.ToString();
                 }
 
-                return token;
-            }
-
-            if (palavraReservada.PalavrasReservadas.Where(x => x.ToUpper() == peek.ToString().ToUpper()).ToList().Count > 0)
-            {
-                token = "<Palavra reservada>";
-                nextChar();
                 return token;
             }
 
@@ -126,23 +128,22 @@ namespace AnalisadorLexico
 
                 lexema.Append(peek);
 
-                if (peek.ToString() == "=" || peek.ToString() == "!" || peek.ToString() == ">" || peek.ToString() == "<" || peek.ToString() == "==" || peek.ToString() == ">=" || peek.ToString() == "<=")
-                {
-                    nextChar();
-
-                    if (peek.ToString() == "=")
-                    {
-                        lexema.Append(peek);
-                        nextChar();
-                    }
-                }
-                else
-                {
-                    nextChar();
-                }
-
                 token = "<RELOP>";
 
+                nextChar();
+                return token;
+            }
+
+            //Delimitadores
+            if (Delimitadores.Where(x => x == peek.ToString()).ToList().Count > 0)
+            {
+                StringBuilder lexema = new StringBuilder();
+
+                lexema.Append(peek);
+
+                token = "<DELIM>";
+
+                nextChar();
                 return token;
             }
 
