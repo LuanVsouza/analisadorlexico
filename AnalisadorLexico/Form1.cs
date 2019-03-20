@@ -27,6 +27,7 @@ namespace AnalisadorLexico
 
         private void btnGeradorLexico_Click(object sender, EventArgs e)
         {
+            txbToken.Clear();
             codigo = txbCodigo.Text;
 
             String token = "";
@@ -75,7 +76,7 @@ namespace AnalisadorLexico
                 MessageBox.Show("Erro: Nenhum Código Digitado!");
             }
 
-            txbCodigo.Clear();
+            //txbCodigo.Clear();
         }
 
         //Carregar o Arquivo com o codigo
@@ -98,6 +99,18 @@ namespace AnalisadorLexico
             {
                 txbCodigo.Text = System.IO.File.ReadAllText(openArqCod.FileName);
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            txbCodigo.Clear();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            txbToken.Clear();
+            txbTabSimbolos.Clear();
+            
         }
     }
 }

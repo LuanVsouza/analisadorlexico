@@ -13,8 +13,8 @@ namespace AnalisadorLexico
 
         private char[] codigo;
 
-        private string[] Operadores = {"<", ">", "=", "==", ">=", "<=", "!", "+", "-", "/", "*"};
-        private string[] Delimitadores = { "{", "}", "(", ")", ";"};
+        private string[] Operadores = {"<", ">", "=", "==", ">=", "<=", "!", "+", "-", "/", "*", "++", "--"};
+        private string[] Delimitadores = { "{", "}", "(", ")", ";", ":"};
 
         private PalavraReservada palavraReservada = new PalavraReservada();
 
@@ -57,16 +57,18 @@ namespace AnalisadorLexico
             //Numero
             if (Char.IsDigit(peek))
             {
-                int v = 0;//vai armezenar o valor do numero
+               //vai armezenar o valor do numero         
+                string lexema = "";
 
-                while (Char.IsDigit(peek))
+                while (Char.IsDigit(peek) || (lexema.Contains(",") == false && codigo[i - 1]==','))
                 {
-                    v = 10 * v + int.Parse(peek.ToString());
+                    lexema += token;
+
                     nextChar();
                 };
 
                 token = "<NUM>";
-
+                    
                 return token;
             }
 

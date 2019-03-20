@@ -9,15 +9,20 @@ namespace AnalisadorLexico
     class PalavraReservada
     {
         public String[] PalavrasReservadas = {
-            "Int",
-            "String",
+            "int",
+            "string",
             "double",
             "float",
             "if",
             "else",
             "while",
             "for",
-            "end"
+            "end",
+            "begin",
+            "var",
+            "write",
+            "read",
+            "program"
         };
 
         public PalavraReservada() { }
