@@ -28,7 +28,7 @@ namespace AnalisadorLexico
         private void btnGeradorLexico_Click(object sender, EventArgs e)
         {
             txbToken.Clear();
-            codigo = txbCodigo.Text;
+            codigo = txbCodigo.Text + " ";
 
             String token = "";
 
